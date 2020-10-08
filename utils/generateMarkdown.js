@@ -11,7 +11,7 @@ ${data.description}
 
 # Table of Contents
 
-## How to install: 
+## What to install: 
 ${data.install}
 
 ## How to use: 
@@ -26,10 +26,9 @@ ${data.contributors}
 ## Test
 ${data.test}
 
-## Github Profile
-${data.Githubpics}
-
-${data.Githubemail}
+# Contact
+if you have any questions about this project you can email me at ${data.githubEmail}
+or you can see my other projects at github.com/${data.username}.
 
 
 `;

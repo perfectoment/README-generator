@@ -25,7 +25,7 @@ function init() {
         },
         {
           type: "input",
-          message: "How do you install your project?",
+          message: "What dependecies are required to use your project?",
           name: "install",
         },
         {
@@ -35,12 +35,12 @@ function init() {
         },
         {
             type: "input",
-            message: "License?",
+            message: "What license did you use?",
             name: "license",
         },
         {
             type: "input",
-            message: "Who contributed?",
+            message: "Who else contributed?",
             name: "contributors",
         },
         {
@@ -50,18 +50,19 @@ function init() {
         },
         {
             type: "input",
-            message: "Github profile picture?",
-            name: "Githubpics",
+            message: "What is your Github username?",
+            name: "username",
         },
         {
             type: "input",
-            message: "Github email?",
-            name: "Githubemail",
+            message: "What is your email address?",
+            name: "githubemail",
         },
       ])
       
       .then(function(data) {
-        // axios.get()
+        const queryUrl = `https://api.github.com/users/${username}/repos?per_page=100`;  
+        axios.get(queryUrl)
         writeToFile("README.md", data)
         
         })
