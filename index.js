@@ -61,7 +61,7 @@ function init() {
       ])
       
       .then(function(data) {
-        axios.get()
+        // axios.get()
         writeToFile("README.md", data)
         
         })
