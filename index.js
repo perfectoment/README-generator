@@ -7,8 +7,9 @@ const generateMarkdown = require("./utils/generateMarkdown");
 const writeFileAsync = util.promisify(fs.writeFile);
 
 
-function writeToFile(fileName, data) {
-    writeFileAsync(fileName, generateMarkdown(data), "utf8")
+function writeToFile(fileName, data, response) {
+    writeFileAsync(fileName, generateMarkdown(data, response), "utf8")
+    console.log(response)
 }
 
 function init() {
@@ -53,22 +54,22 @@ function init() {
             message: "What is your Github username?",
             name: "username",
         },
-        {
-            type: "input",
-            message: "What is your email address?",
-            name: "githubemail",
-        },
       ])
       
       .then(function(data) {
-        const queryUrl = `https://api.github.com/users/${username}/repos?per_page=100`;  
-        axios.get(queryUrl)
-        writeToFile("README.md", data)
-        
-        })
+        const queryUrl = `https://api.github.com/users/${data.username}`;  
+        axios.get(queryUrl).then(function(response) {
+          writeToFile("README.md", data, response)
+        },
+
+      
+      
+        )
+      .catch(function (error){
+        console.log(error)
+      })
+      })
     
 }
-
-
 
 init();

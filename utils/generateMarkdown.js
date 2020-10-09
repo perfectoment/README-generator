@@ -1,4 +1,4 @@
-function generateMarkdown(data) {
+function generateMarkdown(data, response) {
   return `
 ![GitHub license](https://img.shields.io/badge/license-${data.license}-blue.svg)
 
@@ -27,8 +27,10 @@ ${data.contributors}
 ${data.test}
 
 # Contact
-if you have any questions about this project you can email me at ${data.githubEmail}
-or you can see my other projects at github.com/${data.username}.
+
+![Screenshot](${response.data.avatar_url}.png)
+
+Github email: ${response.data.email}
 
 
 `;
